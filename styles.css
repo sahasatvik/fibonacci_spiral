@@ -68,6 +68,16 @@ a {
     filter: invert(0%);
 }
 
+#github {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #81a2be;
+}
+
+#github:hover {
+    color: #b294bb;
+}
+
 #fibonacci-spiral-img.inverted {
     filter: invert(70%);
 }
