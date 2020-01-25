@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: "Roboto Mono", monospace;
+}
+
+body {
+    background-color: #1d1f21;
+}
+
+a {
+    text-decoration: none;
+}
+
+.card {
+    transition: .2s ease background;
+}
+
+.card .card-inner-container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.card.borderless img {
+    display: block;
+    margin: auto;
+    width: 50%;
+}
+
+#global-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#main-card-container {
+    width: 70%;
+    height: auto;
+}
+
+#logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 3rem;
+    font-weight: 300;
+    margin: 1.5em 0em .5em 0em;
+}
+
+#logo {
+    width: auto;
+    height: 6rem;
+    transition: .5s ease;
+}
+
+#logo.inverted, #logo:hover {
+    filter: invert(100%);
+}
+
+#logo.inverted:hover {
+    filter: invert(0%);
+}
+
+#fibonacci-spiral-img.inverted {
+    filter: invert(70%);
+}
+
+#red {
+    color: #cc6666;
+}
+#blue {
+    color: #81a2be;
+}
+
+@media only screen and (max-width: 700px) {
+    #main-card-container {
+        width: 100%;
+    }
+    #logo-container {
+        font-size: 2rem;
+        margin: 1em 0em .5em 0em;
+    }
+}

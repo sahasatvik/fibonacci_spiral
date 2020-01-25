@@ -4,7 +4,6 @@
 import math
 import sys
 from PIL import Image
-from list_primes import list_primes
 
 w, h = 512, 512
 z = 1

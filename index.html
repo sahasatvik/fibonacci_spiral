@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Satvik Saha">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Fibonacci Spirals</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://sahasatvik.github.io/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://sahasatvik.github.io/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://sahasatvik.github.io/icons/favicon-16x16.png">
+    <link rel="manifest" href="https://sahasatvik.github.io/icons/site.webmanifest">
+    
+    <link rel="stylesheet" href="https://sahasatvik.github.io/cards.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="global-container">
+        <div id="logo-container">
+            <img id="logo" src="https://sahasatvik.github.io/logo_alpha.svg" alt="" onmouseup="toggleTheme()"/>
+            <div id="fibonacci">Fibonacci Spirals</div>
+        </div>
+        <div id="main-card-container" class="card-container">
+            <div id="fibonacci-spiral" class="card card-row borderless card-dark">
+                <img id="fibonacci-spiral-img" class="card-item" src="fibonacci_spiral_alpha.gif" alt="fibonacci spiral">
+                <div class="card-inner-container">
+                    <div class="card-item">
+                        The Fibonacci sequence 1, 1, 2, 3, 5 ... is famously defined by the recurrence
+                        F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub>.
+                        Above is a polar plot of (F<sub>n</sub>, F<sub>n</sub>), zoomed out by a factor of 2<sup>32</sup>.
+                        The Fibonacci numbers are so sparse that even at this zoom level, the plot contains only 60 terms.
+                    </div>
+                </div>
+            </div>
+            <div id="fibonacci-lucas-spiral" class="card card-row borderless card-dark">
+                <img id="fibonacci-lucas-spiral-img" class="card-item" src="fibonacci_lucas_spiral_alpha_small_64.gif" alt="fibonacci spiral">
+                <div class="card-inner-container">
+                    <div class="card-item">
+                        The closely related Lucas sequence 2, 1, 3, 4, 7, ... obeys the same recurrence relation, 
+                        L<sub>n</sub> = L<sub>n-1</sub> + L<sub>n-2</sub>.
+                        Above is a polar plot of (F<sub>n</sub>, F<sub>n</sub>) in <span id="red">red</span> 
+                        interlaced with (L<sub>n</sub>, L<sub>n</sub>)
+                        in <span id="blue">blue</span>, zoomed out by a factor of 2<sup>64</sup>.
+                        This plot contains just over 100 terms of each sequence.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        
+        var x = document.getElementsByClassName("card");
+        var light;
+        
+        try {
+            light = JSON.parse(localStorage.getItem("light"));
+            if (light == null) {light = false;}
+        } catch (err) {
+            light = false;
+        }
+        
+        function lightTheme() {
+            document.getElementById("logo").classList.add("inverted");
+            document.getElementById("fibonacci-spiral-img").classList.add("inverted");
+            for (var i = 0; i < x.length; i++) {
+                x[i].classList.remove("card-dark");
+            }
+            document.body.style.backgroundColor = "#f2f2f2";
+            document.getElementById("fibonacci").style.color = "#1d1f21";
+        }
+        function darkTheme() {
+            document.getElementById("logo").classList.remove("inverted");
+            document.getElementById("fibonacci-spiral-img").classList.remove("inverted");
+            for (var i = 0; i < x.length; i++) {
+                x[i].classList.add("card-dark");
+            }
+            document.body.style.backgroundColor = "#1d1f21";
+            document.getElementById("fibonacci").style.color = "#ffffff";
+        }
+        function toggleTheme() {
+            light = !light;
+            refreshTheme();
+        }
+        function refreshTheme() {
+            theme = light? lightTheme : darkTheme;
+            theme();
+            try {
+                localStorage.setItem("light", JSON.stringify(light));
+            } catch (err) {}
+        }
+        refreshTheme();
+    </script>
+</body>
+</html>
