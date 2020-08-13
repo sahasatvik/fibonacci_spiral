@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://sahasatvik.github.io/cards.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark-theme">
     <div id="global-container">
         <div id="logo-container">
             <img id="logo" src="https://sahasatvik.github.io/logo_alpha.svg" alt="" onmouseup="toggleTheme()"/>
@@ -23,7 +23,7 @@
             <a id="github" href="https://github.com/sahasatvik/fibonacci_spiral" target="_blank">View code on GitHub</a>
         </div>
         <div id="main-card-container" class="card-container">
-            <div id="fibonacci-spiral" class="card card-row borderless card-dark">
+            <div id="fibonacci-spiral" class="card card-row borderless">
                 <img id="fibonacci-spiral-img" class="card-item" src="fibonacci_spiral_alpha.gif" alt="fibonacci spiral">
                 <div class="card-inner-container">
                     <div class="card-item">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div id="fibonacci-lucas-spiral" class="card card-row borderless card-dark">
+            <div id="fibonacci-lucas-spiral" class="card card-row borderless">
                 <img id="fibonacci-lucas-spiral-img" class="card-item" src="fibonacci_lucas_spiral_alpha_small_64.gif" alt="fibonacci spiral">
                 <div class="card-inner-container">
                     <div class="card-item">
@@ -50,8 +50,6 @@
         </div>
     </div>
     <script type="text/javascript" charset="utf-8">
-        
-        var x = document.getElementsByClassName("card");
         var light;
         
         try {
@@ -62,22 +60,12 @@
         }
         
         function lightTheme() {
-            document.getElementById("logo").classList.add("inverted");
-            document.getElementById("fibonacci-spiral-img").classList.add("inverted");
-            for (var i = 0; i < x.length; i++) {
-                x[i].classList.remove("card-dark");
-            }
-            document.body.style.backgroundColor = "#f2f2f2";
-            document.getElementById("fibonacci").style.color = "#1d1f21";
+            document.body.classList.remove("dark-theme");
+            document.body.classList.add("light-theme");
         }
         function darkTheme() {
-            document.getElementById("logo").classList.remove("inverted");
-            document.getElementById("fibonacci-spiral-img").classList.remove("inverted");
-            for (var i = 0; i < x.length; i++) {
-                x[i].classList.add("card-dark");
-            }
-            document.body.style.backgroundColor = "#1d1f21";
-            document.getElementById("fibonacci").style.color = "#ffffff";
+            document.body.classList.remove("light-theme");
+            document.body.classList.add("dark-theme");
         }
         function toggleTheme() {
             light = !light;
@@ -90,6 +78,7 @@
                 localStorage.setItem("light", JSON.stringify(light));
             } catch (err) {}
         }
+        
         refreshTheme();
     </script>
 </body>
